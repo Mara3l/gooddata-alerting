@@ -1,0 +1,9 @@
+visualizations:
+    - id: 5199925e-7ce3-4954-8835-755e08a21661
+      column: return_id
+      threshold: 10000
+      threshold_type: uptrends
+    - id: 606e754a-4a13-4886-ac73-8e9aa72c6f2b
+      column: rating
+      threshold: 4
+      threshold_type: downtrends
