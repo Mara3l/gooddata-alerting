@@ -1,8 +1,10 @@
 # GoodData Alerting
 
-The example repository of alerting with GoodData Python SDK.
+The example repository of alerting with GoodData Python SDK. For more information, please check the [tutorial](docs/tutorial.md)
 
 ## Setup Virtual Environment
+
+The following code snippet shows how you can setup virtual environment. You should have installed `virtualenv`.
 
 ```bash
 # Create virtual env
