@@ -10,7 +10,8 @@ If you wish to set alerts for specific metrics or visualizations in GoodData, th
     - `Tip: [What Is Gmail SMTP and How to Use Gmail With My Domain?](https://www.siteground.com/kb/gmail-smtp-server/)`
 - We reccomend you to use [Python virtual environment](../README.md#setup-virtual-environment)
 
-`Note: You can still create alerts without an S3 bucket, but your capabilities will be limited. This is because the S3 bucket is used to store information about notifications that have already been sent. Without it, you will receive the same notification repeatedly.`
+> [!NOTE]
+> You can still create alerts without an S3 bucket, but your capabilities will be limited. This is because the S3 bucket is used to store information about notifications that have already been sent. Without it, you will receive the same notification repeatedly.
 
 ## Disclaimer:
 
@@ -34,7 +35,8 @@ export S3_BUCKET_NAME='<s3-bucket-name>'
 export EMAIL_PASSWORD='<email-password>'
 ```
 
-`Tip: You can find the GoodData host and GoodData workspace ID in the URL <GOODDATA_HOST>/dashboards/#/workspace/<GOODDATA_WORKSPACE_ID>.`
+> [!IMPORTANT]
+> You can find the GoodData host and GoodData workspace ID in the URL <GOODDATA_HOST>/dashboards/#/workspace/<GOODDATA_WORKSPACE_ID>.
     
 ## Step 3: Define thresholds
 
@@ -50,7 +52,8 @@ visualizations:
       threshold_type: downtrends # threshold type can be 'uptrends' or 'downtrends'
 ```
 
-`Tip: You can find the GoodData visualization ID if you open Analytics Designer with a specific visualization: <GOODDATA_HOST>/analyze/#/<GOODDATA_WORKSPACE_ID>/<GOODDATA_VISUALIZATION_ID>/edit.`
+> [!IMPORTANT]
+> You can find the GoodData visualization ID if you open Analytics Designer with a specific visualization: <GOODDATA_HOST>/analyze/#/<GOODDATA_WORKSPACE_ID>/<GOODDATA_VISUALIZATION_ID>/edit.
     
 ## Step 4: Define time to run alerting
 
@@ -64,7 +67,8 @@ while True:
     time.sleep(1)
 ```
 
-`Tip: If you prefer, you can also run it during cache invalidation.`
+> [!NOTE]
+> If you prefer, you can also run it during cache invalidation.
 
 ## Step 5: Run it! 🚀
 
@@ -103,7 +107,8 @@ for new_id, new_item in new_dict.items():
     - If a notification has already been sent, the script does nothing.
     - If a visualization has dropped below a defined threshold, the script resets the notification mechanism (to send a notification once the threshold is reached again).
     
-`Note: You can also check other items in services or utils. However, these are, let's say, just regular Python components that make the entire alerting system work.`
+> [!NOTE]
+> You can also check other items in services or utils. However, these are, let's say, just regular Python components that make the entire alerting system work.
 
 ## Conclusion
 
