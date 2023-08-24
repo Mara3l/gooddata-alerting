@@ -14,7 +14,7 @@ gooddat_host = os.getenv("GOODDATA_HOST")
 gooddata_token = os.getenv("GOODDATA_TOKEN")
 gooddata_workspace_id = os.getenv("GOODDATA_WORKSPACE_ID")
 bucket_name = os.getenv("S3_BUCKET_NAME")
-email_passowrd = os.getenv("EMAIL_PASSWORD")
+email_password = os.getenv("EMAIL_PASSWORD")
 directory_name = "alerting"
 
 gp = GoodPandas(gooddat_host, gooddata_token)
@@ -69,7 +69,7 @@ def main():
         "patrik.braborec@gooddata.com",
         "patrik.braborec@gooddata.com",
         "smtp.gmail.com",
-        email_passowrd
+        email_password
     )
     comparator = Comparator()
 

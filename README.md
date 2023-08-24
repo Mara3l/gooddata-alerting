@@ -1,6 +1,6 @@
 # GoodData Alerting
 
-The example repository of alerting with GoodData Python SDK. For more information, please check the [tutorial](docs/tutorial.md)
+The example repository of alerting with GoodData Python SDK. For more information, please check the [tutorial](docs/tutorial.md).
 
 ## Setup Virtual Environment
 
@@ -29,11 +29,11 @@ If you do not know how to setup S3, you can find useful the following link [s3 s
 ## Setup Environment Variables
 
 ```bash
-export GOODDATA_HOST=''
-export GOODDATA_TOKEN=''
-export GOODDATA_WORKSPACE_ID=''
-export S3_ACCESS_KEY_ID=''
-export S3_SECRET_ACCESS_KEY=''
-export S3_BUCKET_NAME=''
-export EMAIL_PASSWORD=''
+export GOODDATA_HOST='<gooddata-host>'
+export GOODDATA_TOKEN='<gooddata-token>'
+export GOODDATA_WORKSPACE_ID='<gooddata-workspace-id>'
+export S3_ACCESS_KEY_ID='<s3-access-key-id>'
+export S3_SECRET_ACCESS_KEY='<s3-secret-access-key'
+export S3_BUCKET_NAME='<s3-bucket-name>'
+export EMAIL_PASSWORD='<email-password>'
 ```

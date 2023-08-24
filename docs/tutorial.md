@@ -1,19 +1,20 @@
 # How To Create Alerts in GoodData
 
-If you wish to set alerts for specific metrics or visualizations in GoodData, this tutorial will guide you through the process using the GoodData Python SDK.
-Alerts enhance your monitoring capabilities for critical metrics and automate the notification process. This can assist you in preventing serious issues.
-With the flexibility of the GoodData Python SDK, you aren't limited to one predefined solution; you can customize it to your heart's content.
+If you wish to set alerts for specific metrics or visualizations in GoodData, this tutorial will guide you through the process of using the [GoodData Python SDK](https://www.gooddata.com/docs/python-sdk/). Alerts enhance your monitoring capabilities for critical metrics and automate the notification process, which can assist you in preventing serious issues. With the flexibility of the GoodData Python SDK, you aren't limited to just one predefined solution, so you can customize it to your heart's content.
 
 ## Prerequisites:
 
-- GoodData Cloud and GoodData API token.
-- Python virtual environment.
-- S3 bucket (you can still create alerting without S3 bucket but you will have just limited capabilities).
-- SMTP server to send emails (for example, Gmail).
+- [GoodData Cloud](https://www.gooddata.com/developers/cloud-native/doc/cloud/deploy-and-install/cloud/) and [GoodData API token](https://www.gooddata.com/developers/cloud-native/doc/cloud/getting-started/create-api-token/)
+- S3 bucket
+- SMTP server to send emails (for example, Gmail)
+    - `Tip: [What Is Gmail SMTP and How to Use Gmail With My Domain?](https://www.siteground.com/kb/gmail-smtp-server/)`
+- We reccomend you to use [Python virtual environment](../README.md#setup-virtual-environment)
+
+`Note: You can still create alerts without an S3 bucket, but your capabilities will be limited. This is because the S3 bucket is used to store information about notifications that have already been sent. Without it, you will receive the same notification repeatedly.`
 
 ## Disclaimer:
 
-- It works *only* with visualization type *Headline*.
+- It works *only* with visualization type *Headline*
 
 ## Step 1: Install dependencies
 
@@ -40,30 +41,30 @@ export EMAIL_PASSWORD='<email-password>'
 ```yaml
 visualizations:
     - id: <visualization-id> # id of visualization
-    column: <entity-id> # the number to watch, it is the name of column returned from GoodData pandas dataframe
-    threshold: <threshold> # threshold number, for example 300    
-    threshold_type: uptrends # threshold type can be 'uptrends' or 'downtrends'
+      column: <entity-id> # the number to watch, it is the name of column returned from GoodData pandas dataframe
+      threshold: <threshold> # threshold number, for example 300
+      threshold_type: uptrends # threshold type can be 'uptrends' or 'downtrends'
     - id: <visualization-id> # id of visualization
-    column: <entity-id> # the number to watch, it is the name of column returned from GoodData pandas dataframe
-    threshold: <threshold> # threshold number, for example 4 
-    threshold_type: downtrends # threshold type can be 'uptrends' or 'downtrends'
+      column: <entity-id> # the number to watch, it is the name of column returned from GoodData pandas dataframe
+      threshold: <threshold> # threshold number, for example 4
+      threshold_type: downtrends # threshold type can be 'uptrends' or 'downtrends'
 ```
 
 `Tip: You can find the GoodData visualization ID if you open Analytics Designer with a specific visualization: <GOODDATA_HOST>/analyze/#/<GOODDATA_WORKSPACE_ID>/<GOODDATA_VISUALIZATION_ID>/edit.`
     
 ## Step 4: Define time to run alerting
 
-In the [gooddata_alerting.py](../gooddata_aleting.py), you can adjust your prefered time to run alerting.
+In the [gooddata_alerting.py](../gooddata_aleting.py), you can adjust your preferred time to run alerting..
 
 ```python
 schedule.every().day.at("08:00").do(main)
 
 while True:
-schedule.run_pending()
-time.sleep(1)
+    schedule.run_pending()
+    time.sleep(1)
 ```
 
-`Tip: if you preferer, you can also run it during cache invalidation.`
+`Tip: If you prefer, you can also run it during cache invalidation.`
 
 ## Step 5: Run it! 🚀
 
@@ -73,7 +74,7 @@ $ python gooddata_alerting.py
 
 ## How does it work?
 
-The best demonstation of the whole functionality is the following script:
+The best demonstration of the whole functionality is the following script:
 
 ```python
 for new_id, new_item in new_dict.items():
@@ -95,15 +96,15 @@ for new_id, new_item in new_dict.items():
             new_item.notified_before = True
 ```
 
-- `new_dict` contains all information about current "numbers" from GoodData.
-- `old_item` contains all information about past "numbers" from GoodData, for example from yesterday.
-- If there are no past "numbers", it sends a notification in case a visualization has reached a defined threshold.
-- If there are past "numbers", it checks if a visualization has reached a defined threshold and if so, it will send a notification.
-    - If notification was already sent, it does nothing.
-    - If a visualization has dropped below a defined threshold, it resets a notification mechanism (to send a notification once a threshold will be reached again).
+- `new_dict` contains all the information about the current 'numbers' from GoodData.
+- `old_item` contains all the information about past 'numbers' from GoodData, for example, from yesterday.
+- If there are no past 'numbers,' the script sends a notification when a visualization reaches a defined threshold.
+- If there are past 'numbers,' the script checks whether a visualization has reached a defined threshold; if so, it will send a notification.
+    - If a notification has already been sent, the script does nothing.
+    - If a visualization has dropped below a defined threshold, the script resets the notification mechanism (to send a notification once the threshold is reached again).
     
-`Note: check also other things in `services` or `utils` but these are just let say regular Python stuff to make the whole alerting working.`
+`Note: You can also check other items in services or utils. However, these are, let's say, just regular Python components that make the entire alerting system work.`
 
 ## Conclusion
 
-If you have any queries or require assistance, don't hesitate to reach out on the GoodData Slack channel. Ready to get started? Explore the possibilities by signing up for our free trial today!
+If you have any questions or require assistance, don't hesitate to reach us on the [GoodData Slack channel](https://www.gooddata.com/slack/). Willing to try GoodData? Explore the possibilities by signing up for our [free trial today](https://www.gooddata.com/trial/).
