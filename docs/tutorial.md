@@ -7,7 +7,7 @@ If you wish to set alerts for specific metrics or visualizations in GoodData, th
 - [GoodData Cloud](https://www.gooddata.com/developers/cloud-native/doc/cloud/deploy-and-install/cloud/) and [GoodData API token](https://www.gooddata.com/developers/cloud-native/doc/cloud/getting-started/create-api-token/)
 - S3 bucket
 - SMTP server to send emails (for example, Gmail)
-    - `Tip: [What Is Gmail SMTP and How to Use Gmail With My Domain?](https://www.siteground.com/kb/gmail-smtp-server/)`
+    - [What Is Gmail SMTP and How to Use Gmail With My Domain?](https://www.siteground.com/kb/gmail-smtp-server/)
 - We reccomend you to use [Python virtual environment](../README.md#setup-virtual-environment)
 
 > [!NOTE]
@@ -57,7 +57,7 @@ visualizations:
     
 ## Step 4: Define time to run alerting
 
-In the [gooddata_alerting.py](../gooddata_aleting.py), you can adjust your preferred time to run alerting..
+In the [gooddata_alerting.py](../gooddata_aleting.py), you can adjust your preferred time to run alerting.
 
 ```python
 schedule.every().day.at("08:00").do(main)
